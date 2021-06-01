@@ -1,7 +1,7 @@
 <?php
+$user = null;
 include_once("functions.php");
 include_once("bootstrap.html");
-
 define('DBHOST', 'localhost');
 define('DBPASS', 'root');
 define('DBUSER', 'root');
@@ -31,7 +31,7 @@ connect();
               <a class="nav-link text-dark" href="login.php" >Login in</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="signupinfo.php" >Sign up</a>
+              <a class="nav-link text-dark" href="signup.php" >Sign up</a>
           </li>
           <li class="nav-item">
               <a class="nav-link text-dark" href="startpage.php" >Auktion</a>
