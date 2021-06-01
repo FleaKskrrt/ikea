@@ -1,7 +1,7 @@
 <?php
-$user = null;
 include_once("functions.php");
 include_once("bootstrap.html");
+
 define('DBHOST', 'localhost');
 define('DBPASS', 'root');
 define('DBUSER', 'root');

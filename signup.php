@@ -2,6 +2,7 @@
 
 $title = "Sign up";
 require("header.php");
+
 global $conn;
 
 if(
@@ -29,9 +30,9 @@ if(
 
 	    mysqli_query($conn, $sql);
 	    if(count(getUsers($_POST['email'])) > 0){
-	      echo "Bruger blev registreret med success";
+	      echo "Bruger oprettet";
 	    }
-	   }	else {
+	  } else {
 	    echo "Bruger eksisterer allerede";
 	  }
 	}
@@ -39,17 +40,18 @@ if(
 ?>
 <body>
 
-	<div id="user-form">
+	<div id="user-registration">
 		<a href="header.php"><p>Gå tilbage</p></a>
-		  <form name="registerUserForm" action="signup.php" method="post">
-				<p>First name:<input type="text" name="first_name" placeholder="Ikea"> </p>
-				<p>Last name:<input type="text" name="last_name" placeholder="Ikeasen"> </p>
-				<p>Email:<input type="text" name="email" placeholder="Ikea@ikea.dk"> </p>
-				<p>Password: <input type="password" name="password" placeholder="password"></p>
-				<p>Phone nr. +45: <input type="text" name="phone_nr" placeholder="70150909"></p>
-				<p>Postal code: <input type="text" name="postal_code" placeholder="5000"></p>
-				<p>Street name: <input type="text" name="street_name" placeholder="ikeavej"> </p>
-				<p>House nr.: <input type="text" name="house_nr" placeholder="1"></p>
+		  <form name="registerForm" action="signup.php" method="post">
+						<p>First name:<input type="text" name="first_name" placeholder="Ikea"> </p>
+						<p>Last name:<input type="text" name="last_name" placeholder="Ikeasen"> </p>
+						<p>Email:<input type="text" name="email" placeholder="Ikea@ikea.dk"> </p>
+						<p>Password: <input type="password" name="password" placeholder="password"></p>
+						<p>Phone nr. +45: <input type="text" name="phone_nr" placeholder="70150909"></p>
+						<p>Postal code: <input type="text" name="postal_code" placeholder="5000"></p>
+						<p>Street name: <input type="text" name="street_name" placeholder="ikeavej"> </p>
+						<p>House nr.: <input type="text" name="house_nr" placeholder="1"></p>
+
 				<button type="submit">Registrer bruger</button>
 		</form>
 	</div>
