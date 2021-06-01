@@ -1,5 +1,4 @@
 <?php
-$user = null;
 include_once("functions.php");
 include_once("bootstrap.html");
 define('DBHOST', 'localhost');
@@ -8,6 +7,16 @@ define('DBUSER', 'root');
 define('DBNAME', 'ikeadb');
 
 connect();
+session_start();
+
+if(isset($_POST["logoutBtn"])){
+$_SESSION['user'] = "";
+header("Location: login.php");
+exit();
+}
+if($_SESSION['user'] == ""){
+  header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +46,13 @@ connect();
               <a class="nav-link text-dark" href="startpage.php" >Auktion</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="loginindex.php" >empty2</a>
+              <?php if($_SESSION['user'] == ""){?>
+              <a class="nav-link text-dark" href="login.php" >Login</a>
+            <?php } else {
+              echo '<form action="index.php" method="post">
+                  <button class="btn my-1 col-sm-12 btn-dark text-white btn-sm btn-block " type="submit" name="logoutBtn">Log out</button>
+              </form>';
+            } ?>
           </li>
       </ul>
   </div>

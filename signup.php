@@ -1,6 +1,6 @@
 <?php
 
-$title = "Sign up";
+$title = "IKEA Auktion - Sign up";
 require("header.php");
 
 global $conn;
@@ -41,7 +41,7 @@ if(
 <body>
 
 	<div id="user-registration">
-		<a href="header.php"><p>Gå tilbage</p></a>
+		<a href="login.php"><p>Har du allerede en bruger?</p></a>
 		  <form name="registerForm" action="signup.php" method="post">
 						<p>First name:<input type="text" name="first_name" placeholder="Ikea"> </p>
 						<p>Last name:<input type="text" name="last_name" placeholder="Ikeasen"> </p>
