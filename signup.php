@@ -1,8 +1,7 @@
 <?php
 
 $title = "IKEA Auktion - Sign up";
-require("header.php");
-
+include_once("connect.php");
 global $conn;
 
 if(
@@ -38,6 +37,9 @@ if(
 	}
 
 ?>
+<head>
+	<title><?php echo $title;?></title>
+</head>
 <body>
 
 	<div id="user-registration">

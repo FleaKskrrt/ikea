@@ -1,12 +1,6 @@
 <?php
 $title = "IKEA Auktion - Login";
-include('functions.php');
-define('DBHOST', 'localhost');
-define('DBPASS', 'root');
-define('DBUSER', 'root');
-define('DBNAME', 'ikeadb');
-
-connect();
+include_once("connect.php");
 session_start();
 
 $loginstatus;
@@ -43,10 +37,12 @@ if(isset($_POST['login'])){
                          name="password" value="">
             </div>
             <p><?php echo $loginstatus ?></p>
+            <a href="signup.php"><p>Opret bruger</p></a>
             <input class="button" type="submit"
                      name="login" value="Sign In">
         </div>
     </form>
+
 </body>
 
 </html>
