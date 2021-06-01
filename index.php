@@ -1,6 +1,6 @@
 <?php
 
-$title = "Forside";
+$title = "IKEA Auktion - Home";
 require("header.php");
 
 
