@@ -1,15 +1,22 @@
 <?php
 $title = "IKEA Auktion - Login";
+include("functions.php");
 include_once("connect.php");
+
 session_start();
 
-$loginstatus;
+$loginstatus = "";
+
+if (!isset($_SESSION['user'])) {
+  $loginstatus = "You are not logged in";
+}
 
 if(isset($_POST['login'])){
-  if(count(getUsers($_POST['email']))>0){
-    if($_POST['password'] == getUsers($_POST['email'])[0]['password']) {
-        $_SESSION['user'] = $_POST['email'];
-        header("Location: index.php");
+  $users = getUsers($_POST['email']);
+  if(count($users)>0){
+    if($_POST['password'] == $users[0]['password']) {
+        $_SESSION['user'] = $users[0]['user_id'];
+        header("Location: startpage.php");
         exit();
     } else {
       $loginstatus = "Password is invalid";
@@ -17,8 +24,6 @@ if(isset($_POST['login'])){
   } else {
     $loginstatus = "Email does not exist";
   }
-} else {
-  $loginstatus = "You are not logged in";
 }
 ?>
 

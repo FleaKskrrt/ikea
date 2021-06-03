@@ -30,14 +30,14 @@ if($_SESSION['user'] == ""){
       </button>
     <div class="collapse navbar-collapse float-right" id="collapsibleNavbar">
       <ul class="nav  navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="index.php" >Auktioner</a>
+        </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="login.php" >Login in</a>
+              <a class="nav-link text-dark" href="new_item_form.php" >Tilføj Produkt</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="signup.php" >Sign up</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link text-dark" href="startpage.php" >Auktion</a>
+              <a class="nav-link text-dark" href="Profile.php" >Profile</a>
           </li>
           <li class="nav-item">
               <?php if($_SESSION['user'] == ""){?>
@@ -58,6 +58,6 @@ if($_SESSION['user'] == ""){
   &copy; 1993 -
   <script>
     document.write(new Date().getFullYear())
-  </script> | Aros & Søn ApS <a
+  </script> | IKEA A/S <a
   </div>
 </footer>
