@@ -9,7 +9,7 @@ require("header.php");
 
       <div id = "Container">
       	<div id = "Search">
-      		<form method = 'post' action  = 'search.php'>
+      		<form method = 'GET' action  = 'search.php'>
       			<input type = 'text' name = 'product_name' placeholder = 'Product Name'>
       			<button type = 'submit' name = 'search' </button>
       		</form>
