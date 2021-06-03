@@ -53,7 +53,7 @@ include_once("connect.php");
 	if($sql_exec && $sql_exec1)
 	{
 		echo "Successfylly added";
-		header("Location: index.php");
+		header("Location: auctions.php");
 	}
 
 ?>
