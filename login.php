@@ -16,7 +16,7 @@ if(isset($_POST['login'])){
   if(count($users)>0){
     if($_POST['password'] == $users[0]['password']) {
         $_SESSION['user'] = $users[0]['user_id'];
-        header("Location: startpage.php");
+        header("Location: index.php");
         exit();
     } else {
       $loginstatus = "Password is invalid";

@@ -31,7 +31,7 @@ if($_SESSION['user'] == ""){
     <div class="collapse navbar-collapse float-right" id="collapsibleNavbar">
       <ul class="nav  navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link text-dark" href="index.php" >Auktioner</a>
+            <a class="nav-link text-dark" href="auctions.php" >Auctions</a>
         </li>
           <li class="nav-item">
               <a class="nav-link text-dark" href="new_item_form.php" >Tilføj Produkt</a>
