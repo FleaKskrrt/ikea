@@ -10,8 +10,9 @@
 
 		$sql = mysqli_real_escape_string($conn , $sql);
 
-		$raw_results = mysqli_query($conn , "SELECT * FROM product , sales
-			WHERE (`product_name` LIKE '%".$sql."%') OR (`description` LIKE '%".$sql."%')") or die(mysqli_error());
+		$raw_results = mysqli_query($conn , "SELECT product.product_name, product.description, product.product_id, sales.sales_id FROM product , sales
+			WHERE (`product_name` LIKE '%".$sql."%' AND product.product_id = sales.sales_id) OR (`description` LIKE '%".$sql."%' AND product.product_id = sales.sales_id)");
+
 
 		if(mysqli_num_rows($raw_results) > 0){
 
