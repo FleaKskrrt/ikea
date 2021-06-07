@@ -1,6 +1,8 @@
 <?php
 
 $title = "IKEA Auktion - Sign up";
+include("functions.php");
+include_once("bootstrap.html");
 include_once("connect.php");
 global $conn;
 
@@ -37,28 +39,36 @@ if(
 	}
 
 ?>
+<html lang="en">
 <head>
-	<title><?php echo $title;?></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $title;?></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
-
-	<div id="user-registration">
-		<a href="login.php"><p>Har du allerede en bruger?</p></a>
-		  <form name="registerForm" action="signup.php" method="post">
-						<p>First name:<input type="text" name="first_name" placeholder="Ikea"> </p>
-						<p>Last name:<input type="text" name="last_name" placeholder="Ikeasen"> </p>
-						<p>Email:<input type="text" name="email" placeholder="Ikea@ikea.dk"> </p>
-						<p>Password: <input type="password" name="password" placeholder="password"></p>
-						<p>Phone nr. +45: <input type="text" name="phone_nr" placeholder="70150909"></p>
-						<p>Postal code: <input type="text" name="postal_code" placeholder="5000"></p>
-						<p>Street name: <input type="text" name="street_name" placeholder="ikeavej"> </p>
-						<p>House nr.: <input type="text" name="house_nr" placeholder="1"></p>
-
-				<button type="submit">Registrer bruger</button>
-		</form>
+	<div class="container-fluid">
+      <h1 class="text-center my-3">Sign Up</h1>
+				<hr class="mb-4">
+					<div class="row justify-content-center">
+		  			<form class="container col-md-4" name="registerForm" action="signup.php" method="post">
+							<div class="form-group">
+								<p>First name:<input class="form-control" type="text" name="first_name" placeholder="Ikea"></p>
+								<p>Last name:<input class="form-control" type="text" name="last_name" placeholder="Ikeasen"></p>
+								<p>Email:<input class="form-control" type="text" name="email" placeholder="Ikea@ikea.dk"></p>
+								<p>Password: <input class="form-control" type="password" name="password" placeholder="password"></p>
+								<p>Phone nr. +45: <input class="form-control" type="text" name="phone_nr" placeholder="70150909"></p>
+								<p>Postal code: <input class="form-control" type="text" name="postal_code" placeholder="5000"></p>
+								<p>Street name: <input class="form-control" type="text" name="street_name" placeholder="ikeavej"></p>
+								<p>House nr.: <input class="form-control" type="text" name="house_nr" placeholder="1"></p>
+								<button class="btn btn-warning" type="submit">Register User</button>
+							</div>
+								<p>Har du allerede en bruger?</p>
+								<strong><a class="text-warning" href="login.php"><p>Log In.</p></a></strong>
+						</form>
+					</div>
 	</div>
-
-
-
 </body>
 </html>

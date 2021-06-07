@@ -55,7 +55,7 @@ if($_SESSION['user'] == ""){
 <footer class="footer mt-auto navbar-light border-bottom fixed-bottom" style="background-color:#F3C13A;">
   <div class="container">
     <div class="py-2 text-center">
-  &copy; 1993 -
+  &copy; 1943 -
   <script>
     document.write(new Date().getFullYear())
   </script> | IKEA A/S <a

@@ -1,22 +1,32 @@
 <?php
 $title = "IKEA Auktion - Tilføj Auktion";
 include("functions.php");
+include_once("bootstrap.html");
 require("header.php");
  ?>
 
 
-<html>
-<head>
-<title>List item</title>
-</head>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title><?php echo $title;?></title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+ </head>
 <body>
+  <div class="container-fluid">
+        <h1 class="text-center my-3">New Auction</h1>
+  			<hr class="mb-4">
+  			<div class="row justify-content-center">
+<form class="container col-md-3" method = "post" action = "new_item_to_db.php">
 
-<form method = "post" action = "new_item_to_db.php">
-	<center>
+    <div class="form-group">
 
-		<p>Product Name	: <input type = "text" name = "pname"  ></p>
-		<p>Minimum Price		: <input type = "text" name = "start_bid" ></p>
-		<p>Category		: <select name = "category">
+		<p>Product Name	: <input class="form-control" type = "text" name = "pname"  ></p>
+		<p>Minimum Price		: <input class="form-control" type = "text" name = "start_bid" ></p>
+		<p>Category		: <select class="form-control" name = "category">
 						<option value = "Chair">Chair</option>
 						<option value = "Table">Table</option>
 						<option value = "Lamp">Lamp</option>
@@ -24,12 +34,13 @@ require("header.php");
 						<option value = "Couch">Couch</option>
 						<option value = "Bed">Bed</option>
 					</select></p>
-		<p>Auction Start Time 	: <input type = "datetime-local" name = "starttime"></p>
-		<p>Auction End Time 	: <input type = "datetime-local" name = "endtime"></p>
-		<p>Description		: <textarea rows = "4" cols = "20"  name = "description"></textarea></p>
+		<p>Auction Start Time 	: <input class="form-control" type = "datetime-local" name = "starttime"></p>
+		<p>Auction End Time 	: <input class="form-control" type = "datetime-local" name = "endtime"></p>
+		<p>Description		: <textarea class="form-control" rows = "4" cols = "20"  name = "description"></textarea></p>
   <input hidden type = "text" name = "user_id" value = <?php echo $_SESSION['user']; ?>>
 	<input type = "submit" value = "List item">
-	</center>
+  </div>
+
 </form>
 
 </body>

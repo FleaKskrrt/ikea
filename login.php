@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
   if(count($users)>0){
     if($_POST['password'] == $users[0]['password']) {
         $_SESSION['user'] = $users[0]['user_id'];
-        header("Location: auctions.php");
+        header("Location: index.php");
         exit();
     } else {
       $loginstatus = "Password is invalid";
@@ -37,18 +37,18 @@ if(isset($_POST['login'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-<style>
-</style>
+
 <body>
   <div class="container-fluid">
     <div class="container">
-      <h1 class="text-center mb-4 mt-2">IKEA Auctions</h1>
+      <h1 class="text-center my-3">IKEA Auctions</h1>
+      <hr class="mb-4">
       <div class="row justify-content-center">
         <div class="col=4">
   <div class="login-form">
     <form action="login.php" method="post">
         <div class="from-group">
-            <h1 class="text-center mb-4">Login</h1>
+            <h2 class="text-center mb-4">Login</h2>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="E-mail" name="email" value="">
             </div>
@@ -56,11 +56,10 @@ if(isset($_POST['login'])){
                 <input type="password" class="form-control" placeholder="Password" name="password" value="">
             </div>
             <p><?php echo $loginstatus ?></p>
-            <a href="signup.php"><p>Sign up now</p></a>
 
         </div>
-        <input class="btn" type="submit"
-                 name="login" value="Sign In">
+        <input class="btn btn-warning mb-2" type="submit"   name="login" value="Sign In">
+        <a class="text-warning"href="signup.php"><p>Sign up now</p></a>
           </div>
         </div>
       </div>
