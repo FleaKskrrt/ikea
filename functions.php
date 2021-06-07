@@ -61,7 +61,7 @@ while($row = mysqli_fetch_assoc($result)){
 
 function getProducts() {
 global $conn;
-$sql = "SELECT product.product_name, product.start_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id
+$sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id
 			  FROM product, sales, time_track
 				WHERE product.product_id = sales.sales_id
         AND time_track.track_id = product.bid_track_id AND sales.status IN ('ongoing', 'yet to bid')";

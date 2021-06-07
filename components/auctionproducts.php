@@ -10,7 +10,7 @@
 
        <tr>
        <td><?php echo $product['product_name']?></td>
-       <td><?php echo $product['start_bid']?></td>
+       <td><?php echo $product['current_bid']?></td>
        <td><?php echo $product['status']?></td>
        <td><?php echo $interval->format('%D:%H:%I:%S') ?></td>
        <td><form method = "post" action = "item_details.php"><button name = "details" type = "submit" value = " <?php echo $product['sales_id'] ?> ">Details</button></form></td>
