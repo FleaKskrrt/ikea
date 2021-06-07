@@ -1,6 +1,7 @@
 <?php
 $title = "IKEA Auktion - Login";
 include("functions.php");
+include_once("bootstrap.html");
 include_once("connect.php");
 
 session_start();
@@ -26,27 +27,46 @@ if(isset($_POST['login'])){
   }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $title;?></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+</head>
+<style>
+</style>
 <body>
+  <div class="container-fluid">
+    <div class="container">
+      <h1 class="text-center mb-4 mt-2">IKEA Auctions</h1>
+      <div class="row justify-content-center">
+        <div class="col=4">
+  <div class="login-form">
     <form action="login.php" method="post">
-        <div class="login-box">
-            <h1>Login</h1>
-
-            <div class="textbox">
-                <input type="text" placeholder="E-mail"
-                         name="email" value="">
+        <div class="from-group">
+            <h1 class="text-center mb-4">Login</h1>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="E-mail" name="email" value="">
             </div>
-
-            <div class="textbox">
-                <input type="password" placeholder="Password"
-                         name="password" value="">
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" name="password" value="">
             </div>
             <p><?php echo $loginstatus ?></p>
-            <a href="signup.php"><p>Opret bruger</p></a>
-            <input class="button" type="submit"
-                     name="login" value="Sign In">
+            <a href="signup.php"><p>Sign up now</p></a>
+
         </div>
+        <input class="btn" type="submit"
+                 name="login" value="Sign In">
+          </div>
+        </div>
+      </div>
     </form>
+  </div>
+</div>
 
 </body>
 
