@@ -77,3 +77,23 @@ $sql = "SELECT product.product_name, product.start_bid, sales.status, time_track
 
     return $products;
 }
+
+
+function getIdetails($sales_id) {
+global $conn;
+$sql = "SELECT product.product_id, product.product_name, product.category, product.description, product.seller_id,
+        product.start_bid, product.start_bid, sales.status, sales.sales_id, sales.current_bid, sales.current_bid_id, time_track.start_time, time_track.end_time
+			  FROM product, sales, time_track
+				WHERE sales_id = '$sales_id' AND product.product_id = sales.sales_id
+        AND time_track.track_id = product.bid_track_id";
+$result = mysqli_query($conn, $sql);
+$details =	[];
+
+if(mysqli_num_rows($result)>0){
+  while($row = mysqli_fetch_assoc($result)) {
+        $details[] = $row;
+  }
+}
+
+return $details;
+}
