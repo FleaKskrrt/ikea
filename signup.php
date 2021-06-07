@@ -53,7 +53,7 @@ if(
       <h1 class="text-center my-3">Sign Up</h1>
 				<hr class="mb-4">
 					<div class="row justify-content-center">
-		  			<form class="container col-md-4" name="registerForm" action="signup.php" method="post">
+		  			<form class="container col-md-4" name="registerForm" action="login.php" method="post">
 							<div class="form-group">
 								<p>First name:<input class="form-control" type="text" name="first_name" placeholder="Ikea"></p>
 								<p>Last name:<input class="form-control" type="text" name="last_name" placeholder="Ikeasen"></p>

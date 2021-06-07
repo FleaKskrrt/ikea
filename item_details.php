@@ -1,12 +1,13 @@
 <?php
 include("functions.php");
 require("header.php");
+$status = setStatus();
 $sales_id = $_POST['details'];
 
 $details =  getIdetails($sales_id);
 foreach ($details as $details)?>
 <div>
-  <image src = '.png'>";
+  <image src = '.png'>
   <h3>Sales ID : <?php echo $details['sales_id'];?> </h3>
   <h4>Product Name : <?php echo $details['product_name'];?> </h4>
   <h4>Category : <?php echo $details['category'];?> </h4>
@@ -28,7 +29,7 @@ foreach ($details as $details)?>
         echo "<td>" . $details['current_bid_id'] . "</td><td>" . $details['current_bid'] . "</td>";
     echo "</table>";
     echo "<br><br>";
-    echo "<h2>Bid Now!</font></h2>";
+    echo "<h2>Bid Now!</h2>";
 
     echo "<form action = 'bid_update.php' method = 'post'>";
       echo "<input type = 'text' name = 'new_bid' placeholder = 'Your Bid'<br>";
