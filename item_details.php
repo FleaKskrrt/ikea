@@ -26,7 +26,7 @@ foreach ($details as $details)?>
       if($details['current_bid_id'] == $details['seller_id'])
         echo "<td><b>Haven't Bid Yet</b></td>";
       else
-        echo "<td>" . $details['current_bid_id'] . "</td><td>" . $details['current_bid'] . "</td>";
+        echo "<td>" . $details['first_name'] . "&nbsp;" . $details['last_name'] . "</td><td>" . $details['current_bid'] . "</td>";
     echo "</table>";
     echo "<br><br>";
     echo "<h2>Bid Now!</h2>";
@@ -45,8 +45,8 @@ foreach ($details as $details)?>
     echo "<h2>Status : Finished</h2>";
     echo "<table><tr><th>Top Bid</th></tr>";
       if($details['current_bid_id'] == $details['seller_id'])
-        echo "<td><b>No Bid Happened</b></td>";
+        echo "<td><b>No Bids Happened</b></td>";
       else
-        echo "<td>" . $details['current_bid_id'] . "</td><td>" . $details['current_bid'] . "</td>";
+        echo "<td>" . $details['first_name'] . "&nbsp;" . $details['last_name'] . "</td><td>" . $details['current_bid'] . "</td>";
   }?>
 </div>

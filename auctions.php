@@ -6,6 +6,7 @@ require("header.php");
 $status = setStatus();
 $products = getProducts();
 
+
 ?>
 
 <body>
@@ -25,4 +26,6 @@ $products = getProducts();
       	</div>
 
       </div>
+
+
 </body>

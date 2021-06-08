@@ -82,10 +82,11 @@ $sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track
 function getIdetails($sales_id) {
 global $conn;
 $sql = "SELECT product.product_id, product.product_name, product.category, product.description, product.seller_id,
-        product.start_bid, product.start_bid, sales.status, sales.sales_id, sales.current_bid, sales.current_bid_id, time_track.start_time, time_track.end_time
-			  FROM product, sales, time_track
+        product.start_bid, product.start_bid, sales.status, sales.sales_id, sales.current_bid, sales.current_bid_id, time_track.start_time, time_track.end_time,
+        users.user_id, users.first_name, users.last_name
+			  FROM product, sales, time_track, users
 				WHERE sales_id = '$sales_id' AND product.product_id = sales.sales_id
-        AND time_track.track_id = product.bid_track_id";
+        AND time_track.track_id = product.bid_track_id AND sales.current_bid_id = users.user_id";
 $result = mysqli_query($conn, $sql);
 $details =	[];
 
@@ -96,4 +97,31 @@ if(mysqli_num_rows($result)>0){
 }
 
 return $details;
+}
+
+
+function countCategories($category){
+  global $conn;
+  $sql = "SELECT COUNT(category) FROM product WHERE category = '$category'";
+  $result = mysqli_query($conn, $sql);
+  $list = [];
+  if(mysqli_num_rows($result)>0) {
+    while($row = mysqli_fetch_assoc($result)) {
+      $list[] = $row;
+    }
+  }
+  return $list;
+}
+
+function getAllCategories() {
+  global $conn;
+  $sql = "SELECT category FROM product";
+  $result = mysqli_query($conn, $sql);
+  $categories = [];
+  if(mysqli_num_rows($result)>0) {
+    while($row = mysqli_fetch_assoc($result)) {
+      $categories[] = $row;
+    }
+  }
+  return $categories;
 }

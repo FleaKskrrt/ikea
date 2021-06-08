@@ -2,7 +2,7 @@
       $sales_s_time = $product['start_time'];
       $sales_e_time = $product['end_time'];
       $sales_id = $product['sales_id'];
-      //echo "$bid_s_time "."$bid_e_time"."<br>";
+
 
       $sales_s_tim = new DateTime();
       $sales_e_time = new DateTime($sales_e_time);
