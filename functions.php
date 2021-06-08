@@ -125,3 +125,24 @@ function getAllCategories() {
   }
   return $categories;
 }
+
+
+
+function getUserAuctions($user) {
+global $conn;
+$sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id, product.seller_id, users.user_id
+			  FROM product, sales, time_track, users
+				WHERE product.product_id = sales.sales_id AND users.user_id = '$user'
+        AND time_track.track_id = product.bid_track_id AND sales.status IN ('ongoing', 'yet to bid')";
+
+    $result = mysqli_query($conn, $sql);
+		$products =	[];
+
+    if(mysqli_num_rows($result)>0){
+      while($row = mysqli_fetch_assoc($result)) {
+            $products[] = $row;
+      }
+	  }
+
+    return $products;
+}
