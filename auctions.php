@@ -4,8 +4,13 @@ $title = "IKEA Auktion - Auctions";
 include("functions.php");
 require("header.php");
 $status = setStatus();
-$products = getProducts();
+$category = "";
 
+if (isset($_GET["category"])) {
+  $category = $_GET["category"];
+}
+
+$products = getProducts($category);
 
 ?>
 
@@ -27,5 +32,20 @@ $products = getProducts();
 
       </div>
 
-
+      <ul>
+        <?php
+        $categories = getAllCategories();
+        foreach ($categories as $category) {
+          echo "<li>";
+          echo "<a href='?category={$category['category']}'>{$category['category']} ({$category['count']})</a>";
+          echo "</li>";
+        }
+        ?>
+      </ul>
+      <div class="col-md-1 form-group">
+              <select class="custom-select" name="sorting" id="inlineFormCustomSelectPref">
+                  <option value="ASC">Billigste først</option>
+                  <option value="DESC">Dyreste først</option>
+              </select>
+          </div>
 </body>

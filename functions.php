@@ -59,12 +59,16 @@ while($row = mysqli_fetch_assoc($result)){
 }
 }
 
-function getProducts() {
+function getProducts($category) {
 global $conn;
 $sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id
 			  FROM product, sales, time_track
 				WHERE product.product_id = sales.sales_id
-        AND time_track.track_id = product.bid_track_id AND sales.status IN ('ongoing', 'yet to bid')";
+        AND time_track.track_id = sales.time_track_id AND sales.status IN ('ongoing', 'yet to bid')";
+
+        if ($category != "") {
+          $sql = $sql . "AND product.category = '$category'";
+        }
 
     $result = mysqli_query($conn, $sql);
 		$products =	[];
@@ -86,7 +90,7 @@ $sql = "SELECT product.product_id, product.product_name, product.category, produ
         users.user_id, users.first_name, users.last_name
 			  FROM product, sales, time_track, users
 				WHERE sales_id = '$sales_id' AND product.product_id = sales.sales_id
-        AND time_track.track_id = product.bid_track_id AND sales.current_bid_id = users.user_id";
+        AND time_track.track_id = sales.time_track_id AND sales.current_bid_id = users.user_id";
 $result = mysqli_query($conn, $sql);
 $details =	[];
 
@@ -100,22 +104,9 @@ return $details;
 }
 
 
-function countCategories($category){
-  global $conn;
-  $sql = "SELECT COUNT(category) FROM product WHERE category = '$category'";
-  $result = mysqli_query($conn, $sql);
-  $list = [];
-  if(mysqli_num_rows($result)>0) {
-    while($row = mysqli_fetch_assoc($result)) {
-      $list[] = $row;
-    }
-  }
-  return $list;
-}
-
 function getAllCategories() {
   global $conn;
-  $sql = "SELECT category FROM product";
+  $sql = "SELECT category, COUNT(category) AS count FROM product INNER JOIN sales ON product.product_id = sales.product_id where status != 'finished' GROUP BY category";
   $result = mysqli_query($conn, $sql);
   $categories = [];
   if(mysqli_num_rows($result)>0) {
@@ -123,26 +114,46 @@ function getAllCategories() {
       $categories[] = $row;
     }
   }
+
   return $categories;
 }
 
-
-
 function getUserAuctions($user) {
 global $conn;
-$sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id, product.seller_id, users.user_id
-			  FROM product, sales, time_track, users
-				WHERE product.product_id = sales.sales_id AND users.user_id = '$user'
-        AND time_track.track_id = product.bid_track_id AND sales.status IN ('ongoing', 'yet to bid')";
+$sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id, product.seller_id
+			  FROM product
+        INNER JOIN sales ON product.product_id = sales.product_id
+        INNER JOIN time_track ON sales.time_track_id = time_track.track_id
+        WHERE sales.seller_id = '$user' AND sales.status IN ('ongoing', 'yet to bid')";
 
     $result = mysqli_query($conn, $sql);
-		$products =	[];
+		$userAuctions =	[];
 
     if(mysqli_num_rows($result)>0){
       while($row = mysqli_fetch_assoc($result)) {
-            $products[] = $row;
+            $userAuctions[] = $row;
       }
 	  }
 
-    return $products;
+    return $userAuctions;
+}
+
+function getUserBidAuctions($user) {
+global $conn;
+$sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id, product.seller_id
+			  FROM product
+        INNER JOIN sales ON product.product_id = sales.product_id
+        INNER JOIN time_track ON sales.time_track_id = time_track.track_id
+        WHERE sales.current_bid_id = '$user' AND sales.seller_id != '$user'";
+
+    $result = mysqli_query($conn, $sql);
+		$userBidAuctions =	[];
+
+    if(mysqli_num_rows($result)>0){
+      while($row = mysqli_fetch_assoc($result)) {
+            $userBidAuctions[] = $row;
+      }
+	  }
+
+    return $userBidAuctions;
 }

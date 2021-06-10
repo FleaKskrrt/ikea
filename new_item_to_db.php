@@ -21,7 +21,7 @@ include_once("connect.php");
 
 	$product_id = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM product")) + 1;
 	echo "$product_id"."<br>";
-	$sql = "INSERT INTO product VALUES ('$product_id', '$product_name', '$category', '$description', '$seller_id', '$start_bid', '$time_trackID')";
+	$sql = "INSERT INTO product VALUES ('$product_id', '$product_name', '$category', '$description', '$seller_id', '$start_bid')";
 	$sql_exec = mysqli_query($conn, $sql);
 
 	$sales_id = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM sales")) + 1;

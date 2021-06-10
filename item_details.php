@@ -22,11 +22,11 @@ foreach ($details as $details)?>
 <?php
   if(strcmp($details['status'], "ongoing") == 0){
     echo "<h2 >Status : Ongoing</h2>";
-    echo "<table><tr><th>Top Bid</th></tr>";
+    echo "<table class='table'><tr><th>Top Bidder</th><th>Top Bid</th></tr>";
       if($details['current_bid_id'] == $details['seller_id'])
         echo "<td><b>Haven't Bid Yet</b></td>";
       else
-        echo "<td>" . $details['first_name'] . "&nbsp;" . $details['last_name'] . "</td><td>" . $details['current_bid'] . "</td>";
+        echo "<td>" . $details['first_name'] . " " . $details['last_name'] . "</td><td>" . $details['current_bid'] . "</td>";
     echo "</table>";
     echo "<br><br>";
     echo "<h2>Bid Now!</h2>";
@@ -43,10 +43,10 @@ foreach ($details as $details)?>
   else
   {
     echo "<h2>Status : Finished</h2>";
-    echo "<table><tr><th>Top Bid</th></tr>";
+    echo "<table class='table'><tr><th>Top Bidder</th><th>Top Bid</th></tr>";
       if($details['current_bid_id'] == $details['seller_id'])
         echo "<td><b>No Bids Happened</b></td>";
       else
-        echo "<td>" . $details['first_name'] . "&nbsp;" . $details['last_name'] . "</td><td>" . $details['current_bid'] . "</td>";
+        echo "<td>" . $details['first_name'] . " " . $details['last_name'] . "</td><td>" . $details['current_bid'] . "</td>";
   }?>
 </div>
