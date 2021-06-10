@@ -5,12 +5,23 @@ include("functions.php");
 require("header.php");
 $status = setStatus();
 $category = "";
+$sorting = "";
 
 if (isset($_GET["category"])) {
   $category = $_GET["category"];
 }
 
-$products = getProducts($category);
+if (isset($_GET["sorting"])) {
+  $sorting = $_GET["sorting"];
+}
+
+$products = getProducts($category, $sorting);
+
+$categoryString = "";
+
+if ($category != "") {
+  $categoryString = "category=$category&";
+}
 
 ?>
 
@@ -42,10 +53,17 @@ $products = getProducts($category);
         }
         ?>
       </ul>
-      <div class="col-md-1 form-group">
-              <select class="custom-select" name="sorting" id="inlineFormCustomSelectPref">
-                  <option value="ASC">Billigste først</option>
-                  <option value="DESC">Dyreste først</option>
-              </select>
-          </div>
+
+      <ul>
+        <li>
+          <?php
+          echo "<a href='?{$categoryString}sorting=ASC'>Billigste først</a>";
+          ?>
+        </li>
+        <li>
+          <?php
+          echo "<a href='?{$categoryString}sorting=DESC'>Dyreste først</a>";
+          ?>
+        </li>
+      </ul>
 </body>

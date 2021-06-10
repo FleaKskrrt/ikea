@@ -59,7 +59,7 @@ while($row = mysqli_fetch_assoc($result)){
 }
 }
 
-function getProducts($category) {
+function getProducts($category, $sorting) {
 global $conn;
 $sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track.start_time, time_track.end_time, sales.sales_id
 			  FROM product, sales, time_track
@@ -68,6 +68,10 @@ $sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track
 
         if ($category != "") {
           $sql = $sql . "AND product.category = '$category'";
+        }
+
+        if ($sorting != "") {
+          $sql = $sql . "ORDER BY sales.current_bid $sorting";
         }
 
     $result = mysqli_query($conn, $sql);
@@ -124,7 +128,7 @@ $sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track
 			  FROM product
         INNER JOIN sales ON product.product_id = sales.product_id
         INNER JOIN time_track ON sales.time_track_id = time_track.track_id
-        WHERE sales.seller_id = '$user' AND sales.status IN ('ongoing', 'yet to bid')";
+        WHERE sales.seller_id = '$user'";
 
     $result = mysqli_query($conn, $sql);
 		$userAuctions =	[];
