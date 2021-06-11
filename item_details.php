@@ -1,4 +1,5 @@
 <?php
+$title = "IKEA Auktion - Item details";
 include("functions.php");
 require("header.php");
 $status = setStatus();
@@ -19,10 +20,9 @@ if($nowTime < $sales_e_time) {
 ?>
 
 
-
-<div>
-  <image src = '.png'>
-  <h3>Sales ID : <?php echo $detail['sales_id'];?> </h3>
+  <image src = 'stol.png'>
+<div class="float-right pr-5 py-5 my-5 mr-5">
+  <h5>Sales ID: <?php echo $detail['sales_id'];?> </h5><br></br>
   <h4>Product Name : <?php echo $detail['product_name'];?> </h4>
   <h4>Category : <?php echo $detail['category'];?> </h4>
   <h4><?php echo $timeLeft ?> </h4>
@@ -37,18 +37,18 @@ if($nowTime < $sales_e_time) {
     echo "<h2 >Status : Ongoing</h2>";
     echo "<table class='table'><tr><th>Top Bidder</th><th>Top Bid</th></tr>";
       if($detail['current_bid_id'] == $detail['seller_id'])
-        echo "<td><b>Haven't Bid Yet</b></td>";
+        echo "<td><b>Haven't Bid Yet</b></td><td></td>";
       else
         echo "<td>" . $detail['first_name'] . " " . $detail['last_name'] . "</td><td>" . $detail['current_bid'] . "</td>";
     echo "</table>";
     echo "<br><br>";
     echo "<h2>Bid Now!</h2>";
 
-    echo "<form action = 'bid_update.php' class='form-inline' method = 'post'>";
-      echo "<input type = 'number' class='form-control' name = 'new_bid' placeholder = 'Your Bid'<br>";
-        echo "<button type = 'button' class='btn btn-warning' name = 'bid' value = " . $sales_id . ">BID</button>";
-      echo "<input type = 'hidden' name = 'bidder_id' value = " . $_SESSION['user'] . " <br>";
-    echo "</form>";
+    echo "<form action = 'bid_update.php' method = 'post'>";
+          echo "<input type = 'text' name = 'new_bid' placeholder = 'Your Bid'<br>";
+            echo "<button type = 'submit' name = 'bid' value = " . $sales_id . ">BID</button>";
+          echo "<input type = 'hidden' name = 'bidder_id' value = " . $_SESSION['user'] . " <br>";
+        echo "</form>";
 
   }
   else if(strcmp($detail['status'], "yet to bid") == 0)

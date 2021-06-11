@@ -1,4 +1,5 @@
 <?php
+$title = "IKEA Auction - Search";
  include("functions.php");
  include("header.php");
 
@@ -18,7 +19,7 @@
 
 			while($results = mysqli_fetch_array($raw_results)){
 
-				echo "<p><h3>".$results['product_name']."</h3>".$results['description'] . '<form method = "post" action = "item_details.php"><button name = "details" type = "submit" value = ' . $results['sales_id'] . '>Details</button></form></p>';
+				echo "<p class='ml-4'><h3 class='ml-4'>".$results['product_name']."</h3><p class='ml-4'>" .$results['description'] . "</p>" .'<form method = "post" action = "item_details.php"><button name = "details" class="btn btn-warning ml-4" type = "submit" value = ' . $results['sales_id'] . '>Details</button></form></p>';
 			}
 
 		}
@@ -30,4 +31,5 @@
 	else{
 		echo "Minimum length is ".$min_length;
 	}
+  echo "<form method = 'post' action = 'auctions.php'><button name = 'details' class='btn btn-warning ml-4 my-4' type = 'submit'>Go back</button></form>";
 ?>

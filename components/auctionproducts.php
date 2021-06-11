@@ -8,10 +8,10 @@
       $interval = $nowTime->diff($sales_e_time);?>
 
        <tr>
-       <td><?php echo $product['product_name']?></td>
-       <td><?php echo $product['current_bid']?></td>
-       <td><?php echo $product['status']?></td>
-       <td><?php echo $interval->format('%D days, %H hours and %I minutes') ?></td>
-       <td><form method = "post" action = "item_details.php"><button name = "details" type = "submit" value = " <?php echo $product['sales_id'] ?> ">Details</button></form></td>
+       <td class="align-middle"><?php echo $product['product_name']?></td>
+       <td class="align-middle"><?php echo $product['current_bid']?></td>
+       <td class="align-middle"><?php echo $product['status']?></td>
+       <td class="align-middle"><?php echo $interval->format('%D days, %H hours and %I minutes') ?></td>
+       <td class="align-middle"><form method = "post" action = "item_details.php"><button name = "details" class="btn btn-warning mx-auto" type = "submit" value = " <?php echo $product['sales_id'] ?> ">Details</button></form></td>
        </tr>
     <?php } ?>

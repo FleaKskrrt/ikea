@@ -1,6 +1,6 @@
 <?php
 
-$title = "IKEA Auktion - Sign up";
+$title = "IKEA Auction - Sign up";
 include("functions.php");
 include_once("bootstrap.html");
 include_once("connect.php");
@@ -31,10 +31,10 @@ if(
 
 	    mysqli_query($conn, $sql);
 	    if(count(getUsers($_POST['email'])) > 0){
-	      echo "Bruger oprettet";
+	      echo "Successfully created user";
 	    }
 	  } else {
-	    echo "Bruger eksisterer allerede";
+	    echo "User already exist";
 	  }
 	}
 
@@ -53,7 +53,7 @@ if(
       <h1 class="text-center my-3">Sign Up</h1>
 				<hr class="mb-4">
 					<div class="row justify-content-center">
-		  			<form class="container col-md-4" name="registerForm" action="login.php" method="post">
+		  			<form class="container col-md-4" name="registerForm" action="signup.php" method="post">
 							<div class="form-group">
 								<p>First name:<input class="form-control" type="text" name="first_name" placeholder="Ikea"></p>
 								<p>Last name:<input class="form-control" type="text" name="last_name" placeholder="Ikeasen"></p>
@@ -65,7 +65,7 @@ if(
 								<p>House nr.: <input class="form-control" type="text" name="house_nr" placeholder="1"></p>
 								<button class="btn btn-warning" type="submit">Register User</button>
 							</div>
-								<p>Har du allerede en bruger?</p>
+								<p>Already have an account?</p>
 								<strong><a class="text-warning" href="login.php"><p>Log In.</p></a></strong>
 						</form>
 					</div>

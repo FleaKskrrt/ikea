@@ -24,7 +24,7 @@ if($_SESSION['user'] == ""){
 </head>
 <body style="font-family: Segoe UI,Frutiger; background-color: white	;">
   <nav class="navbar navbar-expand-md navbar-light" style="background-color:#F3C13A;">
-    <a class= "navbar-brand" href="index.php">IKEA Auktion</a>
+    <a class= "navbar-brand" href="index.php">IKEA Auction</a>
       <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,7 +34,7 @@ if($_SESSION['user'] == ""){
             <a class="nav-link text-dark" href="auctions.php" >Auctions</a>
         </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="new_item_form.php" >Tilføj Produkt</a>
+              <a class="nav-link text-dark" href="new_item_form.php" >Add Auction</a>
           </li>
           <li class="nav-item">
               <a class="nav-link text-dark" href="Profile.php" >Profile</a>

@@ -150,6 +150,7 @@ $sql = "SELECT product.product_name, sales.current_bid, sales.status, time_track
         INNER JOIN time_track ON sales.time_track_id = time_track.track_id
         WHERE sales.current_bid_id = '$user' AND sales.seller_id != '$user'";
 
+
     $result = mysqli_query($conn, $sql);
 		$userBidAuctions =	[];
 

@@ -1,5 +1,5 @@
 <?php
-$title = "IKEA Auktion - Tilføj Auktion";
+$title = "IKEA Auction - Add Auction";
 include("functions.php");
 
 require("header.php");

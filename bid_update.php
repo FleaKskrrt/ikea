@@ -1,6 +1,6 @@
 <?php
 include("functions.php");
-include_once("connect.php");
+include_once("header.php");
 
 $bidder_id = $_POST['bidder_id'];
 $sales_id = $_POST['bid'];
@@ -26,7 +26,7 @@ else
   $sql = "UPDATE sales SET current_bid = '$new_bid', current_bid_id = '$bidder_id' WHERE sales_id = '$sales_id'";
   mysqli_query($conn, $sql);
   $_POST['details'] = $sales_id;
-  echo "<h2>Dit bud er modtaget</h2>";
-  echo "<form method = 'post' action = 'item_details.php'><button name = 'details' type = 'submit' value = " . $sales_id . ">Gå Tilbage</button></form>";
+  echo "<h2>Your bid has been registered!</h2>";
+  echo "<form method = 'post' action = 'item_details.php'><button name = 'details' type = 'submit' value = " . $sales_id . ">Go back</button></form>";
 }
  ?>
