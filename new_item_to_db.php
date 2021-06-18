@@ -13,7 +13,7 @@ include_once("connect.php");
 
 	global $conn;
 	$conn = $conn;
-
+// skulle have brugt insert last id
 	$time_trackID = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM time_track")) + 1;
 	echo "$time_trackID"."<br>";
 	$sql = "INSERT INTO time_track VALUES ('$time_trackID', '$sales_s_time', '$sales_e_time')";
